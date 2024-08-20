@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventLitez</title>
+    <style> 
+    
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+}
+
+main {
+    max-width: 800px;
+    margin: auto;
+    padding: 1em;
+}
+
+section {
+    background: white;
+    padding: 2em;
+    margin-bottom: 1em;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-top: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 0.5em 0 0.2em;
+}
+
+input {
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 0.7em;
+    background: #333; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #fff;
+    margin: 0.5em 0;
+    padding: 1em;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>EventLitez</h1>
+    </header>
+    <main>
+        <section id="event-creation">
+            <h2>Create an Event</h2>
+            <form id="event-form">
+                <label for="event-name">Event Name:</label>
+                <input type="text" id="event-name" required>
+
+                <label for="event-date">Date:</label>
+                <input type="date" id="event-date" required>
+
+                <label for="event-time">Time:</label>
+                <input type="time" id="event-time" required>
+
+                <label for="event-location">Location:</label>
+                <input type="text" id="event-location" required>
+
+                <button type="submit">Add Event</button>
+            </form>
+        </section>
+
+        <section id="event-list">
+            <h2>Upcoming Events</h2>
+            <ul id="events">
+            
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 EventLitez</p>
+    </footer>
+  <script> 
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('event-form');
+    const eventsList = document.getElementById('events');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('event-name').value;
+        const date = document.getElementById('event-date').value;
+        const time = document.getElementById('event-time').value;
+        const location = document.getElementById('event-location').value;
+
+        if (name && date && time && location) {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<strong>${name}</strong><br>${date} ${time}<br>${location}`;
+            eventsList.appendChild(listItem);
+
+            form.reset();
+        } else {
+            alert('Please fill out all fields.');
+        }
+    });
+});
+
+  </script>
+</body>
+</html>
